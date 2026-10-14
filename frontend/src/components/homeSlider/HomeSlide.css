@@ -4,6 +4,7 @@
   overflow: hidden;
   border-radius: 10px;
   border: var(--border);
+  margin-bottom: 50px;
 }
 
 .carousel-track {

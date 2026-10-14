@@ -3,7 +3,7 @@ import { Link } from "react-router";
 
 import "./HomeSlide.css";
 
-import HomeSliderPagination from "./homeSliderPagintation/homeSliderPagintation";
+import HomeSliderPagination from "./homeSliderPagintation/HomeSliderPagintation";
 import { FiArrowUpRight } from "react-icons/fi";
 
 export default function HomeSlider() {
@@ -64,12 +64,12 @@ export default function HomeSlider() {
             </div>
           ))}
         </div>
-      </div>
-
       <HomeSliderPagination
         currentSlide={currentSlide}
         setCurrentSlide={setCurrentSlide}
       />
+      </div>
+
     </>
   );
 }
