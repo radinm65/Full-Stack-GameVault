@@ -1,0 +1,40 @@
+.public-navbar {
+    width: 5%;
+    height: 400px;
+    margin: 30px 20px;
+    padding: 20px;
+    border: var(--nav-border);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    gap: 40px;
+    background-color: #080a0fd6;
+    box-shadow: inset 0 0 30px 0px rgba(255, 255, 255, 0.30);
+}
+
+.navlinks {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    font-size: 12px;
+}
+
+.active {
+    color: var(--color-accent);
+    transition: color .3s ease;
+}
+
+.not-active {
+    color: var(--color-text);
+    transition: color .3s ease;
+}
+
+.link {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
