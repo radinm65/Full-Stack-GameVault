@@ -1,0 +1,18 @@
+:root,
+[data-theme="dark"] {
+    --color-bg: #080a0f;
+    --color-surface: #111827;
+    --color-text: #ffffff;
+    --color-text-muted: #a0a5b1;
+    --color-accent: #e53945;
+    --color-border: 1px solid #354159;
+}
+
+[data-theme="light"] {
+    --color-bg: #ffffff;
+    --color-surface: #f3f4f6;
+    --color-text: #151515;
+    --color-text-muted: #666666;
+    --color-accent: #e53945;
+    --color-border: 1px solid #354159;
+}
