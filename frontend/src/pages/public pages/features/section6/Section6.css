@@ -1,0 +1,32 @@
+.features-section6-split {
+    grid-template-columns: 1fr 1.2fr;
+}
+
+.features-section6-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+}
+
+.features-section6-step {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 16px;
+}
+
+.features-section6-number {
+    width: 40px;
+    flex-shrink: 0;
+    color: var(--color-accent);
+    font-family: var(--font-heading);
+    font-style: italic;
+    font-size: 24px;
+    line-height: 1.2;
+}
+
+@media (max-width: 768px) {
+    .features-section6-split {
+        grid-template-columns: 1fr;
+    }
+}

@@ -1,0 +1,26 @@
+.features-section1-media {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.features-section1-tags {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.features-section1-tag {
+    padding: 6px 14px;
+    border: 1px solid var(--features-line);
+    border-radius: 20px;
+    background-color: var(--color-surface);
+    font-size: 12px;
+}
+
+.features-section1-hint {
+    margin-top: 10px;
+    color: var(--color-text-muted);
+    font-size: 12px;
+}
