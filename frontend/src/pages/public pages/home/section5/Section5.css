@@ -54,3 +54,16 @@
 .home-section5-login:hover {
     color: var(--color-text);
 }
+
+
+@media (max-width: 768px) {
+    .home-section5 {
+        padding: 50px 20px 60px;
+    }
+
+    .home-section5-actions {
+        flex-wrap: wrap;
+        gap: 14px 20px;
+    }
+}
+

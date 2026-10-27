@@ -5,3 +5,11 @@
 
 
 
+
+
+@media (max-width: 768px) {
+    .home-page-wrapper h1 {
+        font-size: 26px;
+    }
+}
+

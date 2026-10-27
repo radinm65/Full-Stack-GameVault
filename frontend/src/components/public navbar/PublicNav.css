@@ -40,3 +40,28 @@
     align-items: center;
     gap: 5px;
 }
+
+@media (max-width: 768px) {
+    .public-navbar {
+        width: auto;
+        height: auto;
+        margin: 0;
+        inset: auto 12px 22px 12px;
+        padding: 10px 16px;
+        flex-direction: row;
+        justify-content: center;
+        gap: 0;
+    }
+
+    .public-navbar > svg {
+        display: none;
+    }
+
+    .navlinks {
+        width: 100%;
+        flex-direction: row;
+        justify-content: space-around;
+        gap: 8px;
+    }
+}
+

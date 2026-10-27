@@ -78,3 +78,39 @@
 .home-section1-link:hover {
     color: var(--color-accent-hover);
 }
+
+@media (max-width: 768px) {
+    .home-section1 {
+        padding: 20px;
+        margin-bottom: 20px;
+    }
+
+    .home-section1-cards {
+        width: 100%;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+    }
+
+    .home-explore-games-card {
+        padding: 24px 0;
+    }
+
+    .home-section1-cards>.home-explore-games-card:nth-child(2)::before,
+    .home-section1-cards>.home-explore-games-card:nth-child(2)::after {
+        left: 0;
+        right: auto;
+        width: 100%;
+        height: 1px;
+    }
+
+    .home-section1-cards>.home-explore-games-card:nth-child(2)::before {
+        top: 0;
+    }
+
+    .home-section1-cards>.home-explore-games-card:nth-child(2)::after {
+        top: auto;
+        bottom: 0;
+    }
+}
+

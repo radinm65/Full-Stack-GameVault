@@ -11,3 +11,11 @@
 .public-content {
     width: 100%;
 }
+
+
+@media (max-width: 768px) {
+    .public-content {
+        padding-bottom: 90px;
+    }
+}
+
