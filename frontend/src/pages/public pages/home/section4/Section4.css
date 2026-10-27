@@ -1,0 +1,117 @@
+.home-section4 {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--color-bg);
+}
+
+.home-section4-connect {
+    position: relative;
+    overflow: hidden;
+    padding: 60px 40px 60px 180px;
+}
+
+.home-section4-connect::before {
+    content: "";
+    position: absolute;
+    inset: -20px;
+    background-image: url("/images/PublicHomeGameCovers/gameCover.png");
+    background-size: cover;
+    background-position: center;
+    filter: blur(6px);
+}
+
+.home-section4-connect::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom,
+            rgba(8, 10, 15, 0.2) 0%,
+            rgba(8, 10, 15, 0.35) 70%,
+            var(--color-bg) 100%);
+    pointer-events: none;
+}
+
+.home-section4-text-content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 12px;
+    width: 100%;
+}
+
+.home-section4-label {
+    color: var(--color-accent);
+    font-size: 12px;
+}
+
+.home-section4-intro {
+    max-width: 620px;
+    color: var(--color-text-muted);
+}
+
+.home-section4-features {
+    width: 100%;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+.home-section4-feature {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 6px;
+}
+
+.home-section4-feature h2 {
+    font-style: italic;
+}
+
+.home-section4-feature p {
+    color: var(--color-text-muted);
+    font-size: 13px;
+}
+
+.home-section4-feature-icon {
+    display: flex;
+    color: var(--color-accent);
+}
+
+.home-section4-faq {
+    padding: 50px 60px 80px 180px;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 12px;
+}
+
+.home-section4-faq-list {
+    width: 100%;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.home-section4-faq-item {
+    padding: 20px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.home-section4-faq-item h3 {
+    font-family: var(--font-primary);
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.home-section4-faq-item p {
+    color: var(--color-text-muted);
+    font-size: 14px;
+}

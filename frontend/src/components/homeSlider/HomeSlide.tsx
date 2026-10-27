@@ -11,21 +11,21 @@ export default function HomeSlider() {
 
   const slides = [
     {
-      image: "/images/HomeSliderGameCovers/reddead.png",
+      image: "/images/PublicHomeGameCovers/reddead.webp",
       title: "DISCOVER GAMES AND PLAY",
       subtitle: "YOUR NEXT ADVENTURE STARTS HERE",
       link: "/login",
       linkText: "LOGIN",
     },
     {
-      image: "/images/HomeSliderGameCovers/forza6.jpg",
+      image: "/images/PublicHomeGameCovers/forza6.jpg",
       title: "MORE THAN JUST PLAYING",
       subtitle: "TRACK YOUR JOURNEY. OWN EVERY ACHIEVEMENT.",
       link: "/features",
       linkText: "EXPLORE FEATURES",
     },
     {
-      image: "/images/HomeSliderGameCovers/cyberpunk.png",
+      image: "/images/PublicHomeGameCovers/cyberpunk.png",
       title: "EVERY GAME HAS A STORY",
       subtitle: "MAKE EVERY ADVENTURE COUNT.",
       link: "/about",
