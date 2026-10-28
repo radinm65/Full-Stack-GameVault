@@ -25,11 +25,11 @@ export default function PublicFooter() {
             <Link to={"/terms"} className="public-footer-link">
               Terms
             </Link>
+            <Link to={"/login"} className="public-footer-login-link">
+              <h5>LOGIN</h5>
+              <FiArrowUpRight />
+            </Link>
           </div>
-          <Link to={"/login"} className="public-footer-login-link">
-            <h5>LOGIN</h5>
-            <FiArrowUpRight />
-          </Link>
         </div>
         <div className="public-footer-footer">
           <p>Game discovery. Achievement tracking. Community.</p>

@@ -1,0 +1,122 @@
+.home-section2 {
+    background-image: url("/images/PublicHomeGameCovers/gamePosters.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    width: 100%;
+    height: 750px;
+    position: relative;
+}
+
+.home-section2::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top,
+            rgba(0, 0, 0, 1) 0%,
+            rgba(0, 0, 0, 0.6) 50%,
+            transparent 100%);
+    pointer-events: none;
+}
+
+.home-section2-details-wrapper {
+    position: absolute;
+    bottom: 15%;
+    left: 15%;
+    color: white;
+    z-index: 1;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 70%;
+}
+
+.home-section2-intro-div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    gap: 20px;
+}
+
+.home-section2-details {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 30px;
+}
+
+.home-section2-details h3 {
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--color-text-muted);
+}
+
+.home-section2-details span {
+    color: var(--color-accent);
+}
+
+.home-section2-button{
+    display: flex;
+    align-items: center;
+}
+
+.explore-games-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  font-family: "Chakra Petch", sans-serif;
+  font-weight: 500;
+  font-style: italic;
+  border-radius: 25px;
+  border: 2px solid var(--color-accent);
+  color: var(--color-accent);
+  text-decoration: none;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.explore-games-link:hover {
+  background-color: var(--color-accent);
+  color: white;
+}
+
+@media (max-width: 768px) {
+    .home-section2 {
+        height: 620px;
+    }
+
+    .home-section2-details-wrapper {
+        bottom: 40px;
+        left: 20px;
+        width: calc(100% - 40px);
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 24px;
+    }
+
+    .home-section2-intro-div {
+        gap: 14px;
+    }
+
+    .home-section2-intro-div h2 {
+        font-size: 16px;
+    }
+
+    .home-section2-details {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+    }
+
+    .home-section2-details h3 {
+        font-size: 12px;
+    }
+
+    .home-section2-details span {
+        display: none;
+    }
+}
+

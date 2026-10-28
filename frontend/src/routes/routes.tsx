@@ -1,13 +1,15 @@
 import { createBrowserRouter } from "react-router";
-import Layout from "../layouts/Layout";
 
-// public pages
+import PublicLayout from "../layouts/PublicLayout/PublicLayout";
+import PrivateLayout from "../layouts/PrivatePayout/PrivateLayout";
+
+// Public pages
 import Home from "../pages/public pages/home/Home";
 import Features from "../pages/public pages/features/Features";
 import About from "../pages/public pages/about/About";
 import Terms from "../pages/public pages/terms/Terms";
 
-// private pages
+// Private pages
 import Dashboard from "../pages/private pages/dashboard/Dashboard";
 import Games from "../pages/private pages/games/Games";
 import Community from "../pages/private pages/community/Community";
@@ -16,11 +18,10 @@ import Profile from "../pages/private pages/profile/Profile";
 
 const router = createBrowserRouter([
   {
-    path: "/",
-    element: <Layout />,
+    element: <PublicLayout />,
     children: [
       {
-        index: true,
+        path: "/",
         element: <Home />,
       },
       {
@@ -35,6 +36,11 @@ const router = createBrowserRouter([
         path: "terms",
         element: <Terms />,
       },
+    ],
+  },
+  {
+    element: <PrivateLayout />,
+    children: [
       {
         path: "dashboard",
         element: <Dashboard />,

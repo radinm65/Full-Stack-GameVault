@@ -1,0 +1,94 @@
+.features-page-wrapper {
+    --features-line: color-mix(in srgb, var(--color-text) 12%, transparent);
+    display: flex;
+    flex-direction: column;
+    animation: features-page-enter 0.7s ease-out both;
+}
+
+@keyframes features-page-enter {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.features-page-wrapper h1 {
+    font-size: 40px;
+}
+
+/* Shared by every section of the page */
+.features-section {
+    padding: 70px 80px 70px 180px;
+}
+
+.features-split {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 56px;
+    align-items: start;
+}
+
+.features-split-reverse {
+    grid-template-columns: 1fr 1.1fr;
+}
+
+.features-image {
+    width: 100%;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.features-text {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 14px;
+}
+
+.features-label {
+    color: var(--color-accent);
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.features-intro {
+    color: var(--color-text-muted);
+    line-height: 1.6;
+}
+
+.features-point {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.features-point h3 {
+    font-family: var(--font-primary);
+    font-style: normal;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.features-point p {
+    color: var(--color-text-muted);
+    font-size: 14px;
+}
+
+@media (max-width: 768px) {
+    .features-page-wrapper h1 {
+        font-size: 26px;
+    }
+
+    .features-section {
+        padding: 40px 20px;
+    }
+
+    .features-split,
+    .features-split-reverse {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+}

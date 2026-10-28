@@ -1,0 +1,30 @@
+.features-section4-media {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.features-section4-quote {
+    padding: 22px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    border: 1px solid var(--features-line);
+    border-radius: 8px;
+    background-color: var(--color-surface);
+}
+
+.features-section4-quote .features-label {
+    font-size: 11px;
+    font-weight: 400;
+}
+
+.features-section4-quote h2 {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.features-section4-quote p:last-child {
+    color: var(--color-text-muted);
+    font-size: 13px;
+}

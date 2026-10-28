@@ -1,10 +1,11 @@
 :root,
 [data-theme="dark"] {
     --color-bg: #080a0f;
-    --color-surface: #111827;
+    --color-surface: #111622;
     --color-text: #ffffff;
     --color-text-muted: #a0a5b1;
     --color-accent: #e53945;
+    --color-accent-hover: #ff5560;
     --border: 1px solid #354159;
     --nav-border: 1px solid #ffffff;
 }
@@ -15,6 +16,7 @@
     --color-text: #151515;
     --color-text-muted: #666666;
     --color-accent: #e53945;
+    --color-accent-hover: #ff5560;
     --border: 1px solid #354159;
     --nav-border: 1px solid #354159;
 }

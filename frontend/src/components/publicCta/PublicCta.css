@@ -1,0 +1,68 @@
+.public-cta {
+    padding: 70px 80px 70px 180px;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 12px;
+    background-color: color-mix(in srgb, var(--color-accent) 8%, var(--color-bg));
+    border-top: 1px solid color-mix(in srgb, var(--color-text) 12%, transparent);
+    border-bottom: 1px solid color-mix(in srgb, var(--color-text) 12%, transparent);
+}
+
+.public-cta-label {
+    color: var(--color-accent);
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.public-cta-text {
+    color: var(--color-text-muted);
+}
+
+.public-cta-actions {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+}
+
+.public-cta-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    font-family: var(--font-heading);
+    font-weight: 500;
+    font-style: italic;
+    border-radius: 25px;
+    border: 2px solid var(--color-accent);
+    color: var(--color-accent);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.public-cta-button:hover {
+    background-color: var(--color-accent);
+    color: var(--color-text);
+}
+
+.public-cta-login {
+    color: var(--color-text-muted);
+    font-size: 12px;
+    transition: color 0.3s ease;
+}
+
+.public-cta-login:hover {
+    color: var(--color-text);
+}
+
+@media (max-width: 768px) {
+    .public-cta {
+        padding: 50px 20px 60px;
+    }
+
+    .public-cta-actions {
+        flex-wrap: wrap;
+        gap: 14px 20px;
+    }
+}

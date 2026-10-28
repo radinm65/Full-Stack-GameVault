@@ -1,0 +1,27 @@
+.home-page-wrapper{
+    display: flex;
+    flex-direction: column;
+    animation: page-enter 0.7s ease-out both;
+}
+
+
+@keyframes page-enter {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+
+
+
+
+@media (max-width: 768px) {
+    .home-page-wrapper h1 {
+        font-size: 26px;
+    }
+}
+
