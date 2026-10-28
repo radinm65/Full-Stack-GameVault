@@ -1,0 +1,56 @@
+.about-section1 {
+    position: relative;
+    min-height: 680px;
+    padding: 0 80px 90px 180px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    background-image: url("/images/PublicAboutImages/hero.jpg");
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
+}
+
+.about-section1::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom,
+            transparent 55%,
+            var(--color-bg) 100%);
+    pointer-events: none;
+}
+
+.about-section1-content {
+    position: relative;
+    z-index: 1;
+    max-width: 640px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.about-page-wrapper .about-section1 h1 {
+    font-size: 56px;
+    line-height: 1.3;
+}
+
+.about-section1 .about-intro {
+    font-size: 18px;
+}
+
+@media (max-width: 768px) {
+    .about-section1 {
+        min-height: 560px;
+        padding: 0 20px 50px;
+        background-position: 35% top;
+    }
+
+    .about-page-wrapper .about-section1 h1 {
+        font-size: 28px;
+    }
+
+    .about-section1 .about-intro {
+        font-size: 16px;
+    }
+}

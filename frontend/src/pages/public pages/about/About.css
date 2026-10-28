@@ -1,0 +1,58 @@
+.about-page-wrapper {
+    --about-line: color-mix(in srgb, var(--color-text) 12%, transparent);
+    display: flex;
+    flex-direction: column;
+    animation: about-page-enter 0.7s ease-out both;
+}
+
+@keyframes about-page-enter {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.about-page-wrapper h1 {
+    font-size: 40px;
+}
+
+/* Shared by every section of the page */
+.about-section {
+    padding: 70px 80px 70px 180px;
+}
+
+.about-split {
+    display: grid;
+    grid-template-columns: 1fr 1.3fr;
+    gap: 60px;
+    align-items: start;
+}
+
+.about-label {
+    color: var(--color-accent);
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.about-intro {
+    color: var(--color-text-muted);
+    line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+    .about-page-wrapper h1 {
+        font-size: 26px;
+    }
+
+    .about-section {
+        padding: 40px 20px;
+    }
+
+    .about-split {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+}
