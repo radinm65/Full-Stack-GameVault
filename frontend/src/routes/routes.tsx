@@ -18,10 +18,11 @@ import Profile from "../pages/private pages/profile/Profile";
 
 const router = createBrowserRouter([
   {
+    path: "/",
     element: <PublicLayout />,
     children: [
       {
-        path: "/",
+        index: true,
         element: <Home />,
       },
       {
@@ -63,6 +64,10 @@ const router = createBrowserRouter([
       },
     ],
   },
+  // {
+  //   path: "login",
+  //   element: 
+  // },
 ]);
 
 export default router;
