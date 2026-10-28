@@ -1,0 +1,65 @@
+.about-section5-title {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 14px;
+}
+
+.about-section5-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--color-accent);
+    font-size: 14px;
+    transition: color 0.3s ease;
+}
+
+.about-section5-link:hover {
+    color: var(--color-accent-hover);
+}
+
+.about-section5-habits {
+    display: flex;
+    flex-direction: column;
+}
+
+.about-section5-habit {
+    padding: 20px 0;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 16px;
+    border-bottom: 1px solid var(--about-line);
+}
+
+.about-section5-habit:first-child {
+    padding-top: 0;
+}
+
+.about-section5-number {
+    width: 40px;
+    flex-shrink: 0;
+    color: var(--color-accent);
+    font-family: var(--font-heading);
+    font-style: italic;
+    font-size: 20px;
+    line-height: 1.2;
+}
+
+.about-section5-habit-text {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.about-section5-habit-text h3 {
+    font-family: var(--font-primary);
+    font-style: normal;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.about-section5-habit-text p {
+    color: var(--color-text-muted);
+    font-size: 14px;
+}

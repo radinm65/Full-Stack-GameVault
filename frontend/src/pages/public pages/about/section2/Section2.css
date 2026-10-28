@@ -1,0 +1,20 @@
+.about-section2-title {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.about-section2-text {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.about-section2-lead {
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+.about-section2-text .about-intro {
+    font-size: 15px;
+}
