@@ -330,25 +330,22 @@ export default function Dashboard() {
       <FeaturedBanner {...dummyFeaturedGame} />
       <StatsRow stats={dummyStats} />
 
-      {/* TODO: link to the Library tab filtered by status once /games supports ?tab=library&status=playing */}
       <GameSection
         title="Currently Playing"
         linkText="Games"
-        linkTo="/games"
+        linkTo="/games?tab=library&status=playing"
         games={dummyPlayingGames}
       />
-      {/* TODO: link to the Library tab filtered by status once /games supports ?tab=library&status=saved */}
       <GameSection
         title="Want To Play"
         linkText="Library"
-        linkTo="/games"
+        linkTo="/games?tab=library&status=saved"
         games={dummySavedGames}
       />
-      {/* TODO: "Wishlist" should open the Wishlist modal on the Games page instead of navigating */}
       <GameSection
         title="Wishlist"
         linkText="Wishlist"
-        linkTo="/games"
+        linkTo="/games?tab=library&wishlist=open"
         games={dummyWishlistGames}
         variant="wishlist"
       />

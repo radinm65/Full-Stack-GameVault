@@ -1,8 +1,4 @@
 .game-card {
-    --genre-action: #e53945;
-    --genre-racing: #e8c53a;
-    --genre-adventure: #34c76b;
-
     position: relative;
     flex: 0 0 calc((100% - 54px) / 3.4);
     aspect-ratio: 262 / 203;

@@ -1,4 +1,11 @@
 :root {
     --font-primary: "Inter", sans-serif;
     --font-heading: "Chakra Petch", sans-serif;
+
+    --genre-action: #e53945;
+    --genre-rpg: #a56bff;
+    --genre-adventure: #34c76b;
+    --genre-shooter: #ff8a3d;
+    --genre-strategy: #3db6e8;
+    --genre-racing: #e8c53a;
 }

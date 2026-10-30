@@ -1,0 +1,132 @@
+.library-card {
+    position: relative;
+    aspect-ratio: 275 / 350;
+    border: var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    color: #ffffff;
+    background-color: var(--color-surface);
+}
+
+.library-card-cover {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.library-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top,
+            rgba(0, 0, 0, 0.95) 0%,
+            rgba(0, 0, 0, 0.55) 40%,
+            transparent 70%);
+    pointer-events: none;
+}
+
+.library-card-status {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    z-index: 1;
+    padding: 0 12px;
+    border: 2px solid white;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 700;
+    font-style: italic;
+    line-height: 1.8;
+    
+}
+
+.library-card--playing .library-card-status {
+    background-color: var(--color-accent);
+    outline: 2px solid var(--color-accent);
+}
+
+.library-card--saved .library-card-status {
+    background-color: #1f9d4d;
+    outline: 2px solid #1f9d4d;
+}
+
+.library-card--completed .library-card-status {
+    background-color: #2f6fe0;
+    outline: 2px solid #2f6fe0;
+}
+
+.library-card--wishlisted .library-card-status {
+    border-color: #ffffff;
+    background-color: rgba(8, 10, 15, 0.85);
+}
+
+.library-card-body {
+    position: absolute;
+    inset: auto 0 4px 0;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 16px;
+}
+
+.library-card-body h3 {
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+.library-card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 8px;
+}
+
+.library-card-achievements {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-heading);
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.library-card-achievements svg {
+    color: var(--color-accent);
+}
+
+.library-card-meta {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.75);
+}
+
+.library-card-progress-value {
+    font-family: var(--font-heading);
+    font-style: italic;
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 1;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.library-card .library-card-progress {
+    position: absolute;
+    inset: auto 0 0 0;
+    z-index: 1;
+    height: 4px;
+    border-radius: 0;
+}
+
+@media (max-width: 768px) {
+    .library-card-body h3 {
+        font-size: 17px;
+    }
+
+    .library-card-progress-value {
+        font-size: 32px;
+    }
+
+}
