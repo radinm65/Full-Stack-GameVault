@@ -1,4 +1,4 @@
-import ISignupValues from "../forms/ISignupValues";
+﻿import ISignupValues from "../../forms/ISignupValues";
 
 interface ISignupStep {
   values: ISignupValues;

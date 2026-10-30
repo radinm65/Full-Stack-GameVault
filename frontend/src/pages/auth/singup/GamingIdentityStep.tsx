@@ -1,7 +1,7 @@
-import { useRef } from "react";
+﻿import { useRef } from "react";
 import { LuPencil, LuUser } from "react-icons/lu";
 
-import ISignupStep from "../../../core/interfaces/props/ISignupStep.prop";
+import ISignupStep from "../../../core/interfaces/props/auth/ISignupStep.props";
 import { reveal } from "../../../layouts/AuthLayout/reveal";
 
 const BIO_MAX_LENGTH = 160;
@@ -18,7 +18,7 @@ export default function GamingIdentityStep({ values, onChange }: ISignupStep) {
   return (
     <div className="identity">
       <div className="identity-columns">
-        <div className="auth-field auth-reveal" style={reveal(6)}>
+        <div className="auth-field auth-reveal" style={reveal(5)}>
           <span className="auth-label">Final profile preview</span>
           <div className="profile-card">
             <div className="avatar-container">
@@ -58,7 +58,7 @@ export default function GamingIdentityStep({ values, onChange }: ISignupStep) {
 
         <div
           className="auth-field auth-reveal auth-displayed-name"
-          style={reveal(3)}
+          style={reveal(6)}
         >
           <label className="auth-label" htmlFor="signup-display-name">
             Display name
@@ -76,7 +76,7 @@ export default function GamingIdentityStep({ values, onChange }: ISignupStep) {
         </div>
       </div>
 
-      <div className="auth-field auth-reveal" style={reveal(5)}>
+      <div className="auth-field auth-reveal" style={reveal(7)}>
         <label className="auth-label" htmlFor="signup-bio">
           Short bio <span className="auth-optional">(optional)</span>
         </label>

@@ -1,34 +1,46 @@
 import GamevaultLogo from "../../assets/logo/GamevaultLogo";
-import './PrivateFooter.css'
+import "./PrivateFooter.css";
 
-import { FiArrowUpRight } from "react-icons/fi";
-import { Link } from "react-router";
-
-
+import { Link, useLocation } from "react-router";
 
 export default function PrivateFooter() {
+  const location = useLocation().pathname;
+  const footerPages = [
+    {
+      name: "Dashboard",
+      route: "/dashboard",
+    },
+    {
+      name: "Games",
+      route: "/games",
+    },
+    {
+      name: "Community",
+      route: "/community",
+    },
+    {
+      name: "Collections",
+      route: "/collections",
+    },
+    {
+      name: "Profile",
+      route: "/profile",
+    },
+  ];
+
+  const availableFooterPages = footerPages.filter((x) => location !== x.route);
+
   return (
     <>
       <div className="public-footer">
         <div className="public-footer-link-header">
           <GamevaultLogo height={40} width={40} />
           <div className="public-footer-link-div">
-            <Link to={"/"} className="public-footer-link">
-              Home
-            </Link>
-            <Link to={"/features"} className="public-footer-link">
-              Features
-            </Link>
-            <Link to={"/about"} className="public-footer-link">
-              About
-            </Link>
-            <Link to={"/terms"} className="public-footer-link">
-              Terms
-            </Link>
-            <Link to={"/login"} className="public-footer-login-link">
-              <h5>LOGIN</h5>
-              <FiArrowUpRight />
-            </Link>
+            {availableFooterPages.map((page, index) => (
+              <Link to={page.route} key={index} className="public-footer-link">
+                {page.name}
+              </Link>
+            ))}
           </div>
         </div>
         <div className="public-footer-footer">

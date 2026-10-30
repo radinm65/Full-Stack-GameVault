@@ -25,17 +25,6 @@
     gap: 20px;
 }
 
-.public-footer-login-link {
-    color: var(--color-accent);
-    font-weight: 400;
-    font-size: 18px;
-    display: flex;
-    flex-direction: row;
-}
-
-.public-footer-login-link h5{
-    font-weight: 400;
-}
 
 .public-footer-footer {
     display: flex;

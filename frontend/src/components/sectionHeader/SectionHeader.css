@@ -1,0 +1,41 @@
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+}
+
+.section-header h2 {
+    font-size: 28px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.section-header-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 15px;
+    color: var(--color-accent);
+    transition: color 0.3s ease;
+}
+
+.section-header-link:hover {
+    color: var(--color-accent-hover);
+}
+
+.section-header-link:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+    border-radius: 4px;
+}
+
+@media (max-width: 768px) {
+    .section-header h2 {
+        font-size: 22px;
+    }
+
+    .section-header-link {
+        font-size: 14px;
+    }
+}

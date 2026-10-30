@@ -1,4 +1,4 @@
-import ISignupStep from "../../../core/interfaces/props/ISignupStep.prop";
+﻿import ISignupStep from "../../../core/interfaces/props/auth/ISignupStep.props";
 import { reveal } from "../../../layouts/AuthLayout/reveal";
 
 export default function AccountInfoStep({ values, onChange }: ISignupStep) {

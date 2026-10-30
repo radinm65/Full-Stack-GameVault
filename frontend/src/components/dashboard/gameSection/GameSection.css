@@ -1,0 +1,29 @@
+.game-section {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.game-row {
+    display: flex;
+    gap: 18px;
+    overflow-x: auto;
+    padding-bottom: 10px;
+    scroll-snap-type: x proximity;
+    scrollbar-width: thin;
+    -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 120px), transparent);
+    mask-image: linear-gradient(to right, #000 calc(100% - 120px), transparent);
+}
+
+.game-row.game-row--at-end {
+    -webkit-mask-image: none;
+    mask-image: none;
+}
+
+@media (max-width: 768px) {
+    .game-row {
+        gap: 12px;
+        -webkit-mask-image: none;
+        mask-image: none;
+    }
+}

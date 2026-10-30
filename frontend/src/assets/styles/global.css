@@ -5,6 +5,34 @@ body {
   font-family: var(--font-primary);
 }
 
+/* Red scrollbar. `scrollbar-color` is inherited, so this covers every scroll area */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-accent) var(--color-bg);
+}
+
+/* Fallback for browsers without scrollbar-color (older Safari) */
+@supports not (scrollbar-color: auto) {
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--color-bg);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-accent);
+    border-radius: 5px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-accent-hover);
+  }
+}
+
+
 h1,
 h2,
 h3,

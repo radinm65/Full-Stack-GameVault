@@ -3,7 +3,7 @@ import { Link } from "react-router";
 
 import "./HomeSlide.css";
 
-import HomeSliderPagination from "./homeSliderPagintation/HomeSliderPagintation";
+import HomeSliderPagination from "../pagintation/Pagintation";
 import { FiArrowUpRight } from "react-icons/fi";
 
 const DRAG_START_DISTANCE = 5;
