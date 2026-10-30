@@ -1,4 +1,4 @@
-import IGameVault from "../../core/interfaces/props/IGameVault.prop"
+﻿import IGameVault from "../../core/interfaces/props/shared/IGameVault.props"
 
 export default function GamevaultLogo({ width, height }: IGameVault) {
     return (

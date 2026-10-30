@@ -1,0 +1,96 @@
+.private-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    padding: 0 48px;
+    z-index: 90;
+    background: linear-gradient(to bottom,
+            var(--color-bg) 0%,
+            color-mix(in srgb, var(--color-bg) 70%, transparent) 55%,
+            transparent 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.private-header-logo {
+    display: flex;
+}
+
+.private-header-actions {
+    position: absolute;
+    right: 48px;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.private-header-bell {
+    position: relative;
+    display: flex;
+    color: var(--color-text);
+}
+
+.private-header-unread {
+    position: absolute;
+    top: 1px;
+    right: 2px;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background-color: var(--color-accent);
+}
+
+.private-header-user {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.private-header-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: var(--font-heading);
+    font-style: italic;
+    font-weight: 700;
+    font-size: 16px;
+    border: 1px solid var(--color-accent);
+    background-color: var(--color-surface);
+}
+
+.private-header-bell:focus-visible,
+.private-header-user:focus-visible,
+.private-header-logo:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+    border-radius: 6px;
+}
+
+@media (max-width: 768px) {
+    .private-header {
+        height: 72px;
+        padding: 0 16px;
+    }
+
+    .private-header-logo svg {
+        width: 50px;
+        height: 50px;
+    }
+
+    .private-header-actions {
+        right: 16px;
+        gap: 16px;
+    }
+
+    .private-header-name {
+        display: none;
+    }
+}

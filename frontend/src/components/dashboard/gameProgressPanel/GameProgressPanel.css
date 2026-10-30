@@ -1,0 +1,122 @@
+.progress-panel {
+    position: relative;
+    width: 100%;
+    border-radius: 12px;
+    overflow: hidden;
+    color: #ffffff;
+    background-color: #000000;
+}
+
+.progress-panel-track {
+    display: flex;
+    cursor: grab;
+    user-select: none;
+    touch-action: pan-y;
+    transition: transform 0.5s ease;
+}
+
+.progress-panel-track.dragging {
+    transition: none;
+    cursor: grabbing;
+}
+
+.progress-panel-slide {
+    position: relative;
+    flex: 0 0 100%;
+    min-height: 370px;
+}
+
+.progress-panel-image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.progress-panel-slide::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top,rgba(0, 0, 0, 1) 15%,rgba(0, 0, 0, 0.1) 100% );
+    pointer-events: none;
+}
+
+.progress-panel-stats {
+    position: relative;
+    z-index: 1;
+    min-height: 370px;
+    padding: 32px 32px 80px;
+    display: flex;
+    align-items: end;
+}
+
+.progress-panel-stat {
+    flex: 1;
+    text-align: center;
+}
+
+.progress-panel-stat + .progress-panel-stat {
+    border-left: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.progress-panel-value {
+    font-family: var(--font-heading);
+    font-size: clamp(30px, 3.4vw, 48px);
+    font-weight: 500;
+    line-height: 1.2;
+}
+
+.progress-panel-label {
+    font-family: var(--font-heading);
+    font-size: clamp(16px, 1.8vw, 24px);
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.progress-panel-dots {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 28px;
+    z-index: 2;
+}
+
+.progress-panel-dots .pagination-container {
+    margin-top: 0;
+}
+
+
+.progress-panel-stat:last-child
+p:first-child {
+    font-size: 38px;
+}
+
+@media (max-width: 768px) {
+    .progress-panel-slide,
+    .progress-panel-stats {
+        min-height: 600px;
+    }
+
+    .progress-panel-stats {
+        flex-direction: column;
+        justify-content: center;
+        gap: 28px;
+        padding: 32px 24px 80px;
+    }
+
+    .progress-panel-stat {
+        flex: none;
+    }
+
+    .progress-panel-stat + .progress-panel-stat {
+        border-left: none;
+    }
+
+    .progress-panel-value {
+        font-size: 34px;
+    }
+
+    .progress-panel-label {
+        font-size: 18px;
+    }
+}

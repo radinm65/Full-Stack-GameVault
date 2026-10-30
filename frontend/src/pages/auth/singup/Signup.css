@@ -97,6 +97,16 @@
 
 .signup-date {
     color-scheme: dark;
+    /* mobile browsers give date inputs an intrinsic width that overflows the column */
+    min-width: 0;
+    max-width: 100%;
+    display: block;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.signup-date::-webkit-date-and-time-value {
+    text-align: left;
 }
 
 select.auth-input {
@@ -296,7 +306,7 @@ select.auth-input option {
 
 @media (max-width: 600px) {
     .signup-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: minmax(0, 1fr);
     }
 
     .signup-step {
