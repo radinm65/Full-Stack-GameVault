@@ -1,0 +1,295 @@
+.auth-layout {
+    --auth-slide-time: 0.7s;
+    --auth-slide: var(--auth-slide-time) cubic-bezier(0.65, 0, 0.35, 1);
+    --edge: 4px;
+    /* measured from the design: the edge moves 36px sideways per 175px of height */
+    --slant: calc(100vh * 0.2057);
+    --reveal-delay: 0s;
+
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    overflow-x: clip;
+    color: var(--color-text);
+    background-color: var(--color-bg);
+}
+
+/* ---------- One picture, used three ways ----------
+   The picture layers are fixed to the viewport, so a tall step (signup steps 2-3)
+   scrolls over them and the slanted edge keeps its angle */
+
+.auth-bg,
+.auth-poster {
+    position: fixed;
+    inset: 0;
+    background-image: url("/images/AuthImages/auth-posters.png");
+    background-size: cover;
+    background-position: center;
+}
+
+/* Blurred + dimmed copy fills the whole page, so it shows behind the form */
+.auth-bg {
+    overflow: hidden;
+}
+
+.auth-bg::before {
+    content: "";
+    position: absolute;
+    inset: -24px;
+    background: inherit;
+    filter: blur(6px);
+}
+
+.auth-bg::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(8, 10, 15, 0.72);
+}
+
+/* Red slanted edge: a solid copy of the poster shape, offset by the stroke width */
+.auth-poster-edge {
+    position: fixed;
+    inset: 0;
+    background: var(--color-accent);
+}
+
+/* Slide transitions are only on while switching (see AuthLayout.tsx), never during a window resize */
+.auth-layout--sliding .auth-poster,
+.auth-layout--sliding .auth-poster-edge {
+    transition: clip-path var(--auth-slide);
+}
+
+.auth-layout--sliding .auth-form-side {
+    transition: left var(--auth-slide), width var(--auth-slide);
+}
+/* Login: posters on the right. The edge keeps one fixed angle (--slant) at any window size */
+.auth-layout--login .auth-poster {
+    clip-path: polygon(
+        38.9% 0,
+        100% 0,
+        100% 100%,
+        calc(38.9% - var(--slant)) 100%
+    );
+}
+
+.auth-layout--login .auth-poster-edge {
+    clip-path: polygon(
+        calc(38.9% - var(--edge)) 0,
+        100% 0,
+        100% 100%,
+        calc(38.9% - var(--slant) - var(--edge)) 100%
+    );
+}
+
+/* Signup: posters on the left, mirrored */
+.auth-layout--signup .auth-poster {
+    clip-path: polygon(
+        0 0,
+        59% 0,
+        calc(59% - var(--slant)) 100%,
+        0 100%
+    );
+}
+
+.auth-layout--signup .auth-poster-edge {
+    clip-path: polygon(
+        0 0,
+        calc(59% + var(--edge)) 0,
+        calc(59% - var(--slant) + var(--edge)) 100%,
+        0 100%
+    );
+}
+/* ---------- Form side (slides between left and right) ---------- */
+
+.auth-form-side {
+    position: relative;
+    min-height: 100vh;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 28px;
+    padding: 32px 16px;
+}
+
+.auth-layout--login .auth-form-side {
+    left: 0;
+    width: 33.8%;
+}
+
+.auth-layout--signup .auth-form-side {
+    left: 59.4%;
+    width: 40.6%;
+}
+
+/* After a switch, text waits for the slide to finish, then appears one block at a time */
+.auth-layout--swapped {
+    --reveal-delay: var(--auth-slide-time);
+}
+
+.auth-reveal,
+.auth-brand {
+    animation: auth-reveal 0.5s ease-in-out calc(var(--reveal-delay) + var(--i, 0) * 80ms) backwards;
+}
+
+@keyframes auth-reveal {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+.auth-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--color-text);
+    text-decoration: none;
+    font-family: var(--font-heading);
+    font-size: 24px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+/* ---------- Shared form styles (used by Login and Signup) ---------- */
+
+.auth-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    text-align: center;
+}
+
+.auth-title {
+    font-size: 32px;
+    font-weight: 600;
+    font-style: normal;
+}
+
+.auth-subtitle {
+    font-size: 14px;
+    color: var(--color-text-muted);
+}
+
+.auth-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.auth-field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-width: 0;
+    width: 100%;
+}
+
+.auth-label {
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.auth-input {
+    width: 100%;
+    height: 48px;
+    padding: 0 14px;
+    font: inherit;
+    font-size: 14px;
+    color: var(--color-text);
+    background: rgba(8, 10, 15, 0.45);
+    border: 1px solid var(--color-accent);
+    border-radius: 10px;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.auth-input::placeholder {
+    color: var(--color-text-muted);
+}
+
+.auth-input:focus {
+    border-color: var(--color-accent-hover);
+    box-shadow: 0 0 0 3px rgba(229, 57, 69, 0.25);
+}
+
+.auth-btn {
+    width: 100%;
+    height: 48px;
+    font: inherit;
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--color-text);
+    background: var(--color-accent);
+    border: 1px solid var(--color-accent);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.2s, border-color 0.2s;
+}
+
+.auth-btn:hover {
+    background: var(--color-accent-hover);
+    border-color: var(--color-accent-hover);
+}
+
+.auth-btn--outline {
+    font-size: 14px;
+    font-weight: 500;
+    background: transparent;
+    border-color: var(--color-accent);
+}
+
+.auth-btn--outline:hover {
+    background: rgba(229, 57, 69, 0.15);
+}
+
+.auth-switch {
+    text-align: center;
+    font-size: 13px;
+}
+
+.auth-link {
+    color: var(--color-accent);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.auth-link:hover {
+    color: var(--color-accent-hover);
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 900px) {
+    .auth-poster,
+    .auth-poster-edge {
+        display: none;
+    }
+
+    .auth-layout--login .auth-form-side,
+    .auth-layout--signup .auth-form-side {
+        left: 0;
+        width: 100%;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .auth-layout--sliding .auth-poster,
+    .auth-layout--sliding .auth-poster-edge,
+    .auth-layout--sliding .auth-form-side {
+        transition: none;
+    }
+
+    .auth-reveal,
+    .auth-brand {
+        animation: none;
+    }
+}

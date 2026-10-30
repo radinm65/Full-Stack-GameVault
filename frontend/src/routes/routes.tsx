@@ -2,12 +2,17 @@ import { createBrowserRouter } from "react-router";
 
 import PublicLayout from "../layouts/PublicLayout/PublicLayout";
 import PrivateLayout from "../layouts/PrivatePayout/PrivateLayout";
+import AuthLayout from "../layouts/AuthLayout/AuthLayout";
 
 // Public pages
 import Home from "../pages/public pages/home/Home";
 import Features from "../pages/public pages/features/Features";
 import About from "../pages/public pages/about/About";
 import Terms from "../pages/public pages/terms/Terms";
+
+// Auth pages
+import Login from "../pages/auth/login/Login";
+import SignUp from "../pages/auth/singup/Signup";
 
 // Private pages
 import Dashboard from "../pages/private pages/dashboard/Dashboard";
@@ -64,10 +69,19 @@ const router = createBrowserRouter([
       },
     ],
   },
-  // {
-  //   path: "login",
-  //   element: 
-  // },
+  {
+    element: <AuthLayout />,
+    children: [
+      {
+        path: "login",
+        element: <Login />,
+      },
+      {
+        path: "signup",
+        element: <SignUp />,
+      },
+    ],
+  },
 ]);
 
 export default router;

@@ -2,19 +2,19 @@ import "./PrivateLayout.css";
 
 import { Outlet } from "react-router";
 
-import PublicNav from "../../components/public navbar/PublicNav";
+import PrivateNav from "../../components/navbar/private navbar/PrivateNav";
 import Header from "../../components/header/Header";
-import PublicFooter from "../../components/publicFooter/PublicFooter";
+import PrivateFooter from "../../components/privateFooter/PrivateFooter";
 
 export default function PrivateLayout() {
   return (
     <>
-      <div className="bg-layout">
-        <PublicNav />
+      <div className="private-bg-layout">
+        <PrivateNav />
+        <Header />
         <div className="content">
-          <Header />
           <Outlet />
-          <PublicFooter />
+          <PrivateFooter/>
         </div>
       </div>
     </>

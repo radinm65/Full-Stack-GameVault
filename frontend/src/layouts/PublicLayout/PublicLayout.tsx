@@ -2,7 +2,7 @@ import "./PublicLayout.css"
 
 import { Outlet } from "react-router";
 
-import PublicNav from "../../components/public navbar/PublicNav";
+import PublicNav from "../../components/navbar/public navbar/PublicNav";
 import PublicFooter from "../../components/publicFooter/PublicFooter";
 
 export default function PublicLayout() {
