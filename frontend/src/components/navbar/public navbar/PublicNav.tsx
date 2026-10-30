@@ -1,7 +1,7 @@
 import { Link, useLocation } from "react-router";
 import type { IconType } from "react-icons";
 
-import GamevaultLogo from "../../assets/logo/GamevaultLogo";
+import GamevaultLogo from "../../../assets/logo/GamevaultLogo";
 
 import { BiHomeAlt } from "react-icons/bi";
 import { FaRegStar } from "react-icons/fa6";
@@ -25,7 +25,7 @@ export default function PublicNav() {
   const currentRoute = useLocation().pathname;
 
   return (
-    <nav className="public-navbar">
+    <nav className="navbar">
       <GamevaultLogo width={50} height={50} />
 
       <div className="navlinks">

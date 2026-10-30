@@ -1,4 +1,4 @@
-.bg-layout {
+.private-bg-layout {
     width: 100%;
     min-height: 100vh;
     display: flex;
@@ -9,7 +9,7 @@
 }
 
 .content {
-    margin: 30px 60px 30px 0;
+    margin: 100px 60px 30px 180px;
     width: 85%;
 }
 

@@ -1,4 +1,4 @@
-.public-navbar {
+.navbar {
     width: 5%;
     height: 400px;
     margin: 30px 20px;
@@ -42,7 +42,7 @@
 }
 
 @media (max-width: 768px) {
-    .public-navbar {
+    .navbar {
         width: auto;
         height: auto;
         margin: 0;
@@ -53,7 +53,7 @@
         gap: 0;
     }
 
-    .public-navbar > svg {
+    .navbar > svg {
         display: none;
     }
 
