@@ -1,0 +1,19 @@
+.game-link {
+    display: block;
+    color: inherit;
+    text-decoration: none;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Every game card is a game link: on hover it lifts 5px, smoothly */
+.game-link:hover,
+.game-link:focus-visible {
+    transform: translateY(-5px);
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.45);
+}
+
+.game-link:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+}

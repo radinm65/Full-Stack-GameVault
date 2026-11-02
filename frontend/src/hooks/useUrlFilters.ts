@@ -47,5 +47,13 @@ export default function useUrlFilters(defaults: Record<string, string>) {
     );
   }
 
-  return { filters, queryString: searchParams.toString(), setFilter, clearFilters };
+  // Only the page's own filters go into the query string for the data hooks. Other parameters of the
+  // URL (tab, game, wishlist) are left out, so opening a game modal does not reload the list.
+  const ownParams = new URLSearchParams();
+  for (const name of Object.keys(defaults)) {
+    const value = searchParams.get(name);
+    if (value !== null) ownParams.set(name, value);
+  }
+
+  return { filters, queryString: ownParams.toString(), setFilter, clearFilters };
 }

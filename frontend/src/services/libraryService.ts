@@ -8,7 +8,8 @@ import { matchesOption, matchesPlaytime, matchesRating, matchesText } from "./ga
 // ! Filtering, sorting and paging happen on the server, the page only sends the query string.
 // ! Status counts cover the whole library, not only the current page or filters.
 
-const dummyLibrary: ILibraryGame[] = [
+// Exported because the game details service builds its dummy games from the same list
+export const dummyLibrary: ILibraryGame[] = [
   {
     id: 1,
     title: "Marvel's Spider-Man Remastered",

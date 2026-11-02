@@ -3,21 +3,15 @@ import "./LibraryGameCard.css";
 import { IoTrophyOutline } from "react-icons/io5";
 
 import ProgressBar from "../../progressBar/ProgressBar";
+import GameLink from "../gameLink/GameLink";
 import ILibraryGameCard from "../../../core/interfaces/props/games/ILibraryGameCard.props";
-
-const statusLabels = {
-  playing: "Playing",
-  saved: "Saved",
-  completed: "Completed",
-  wishlisted: "Wishlisted",
-};
+import { statusLabels } from "../../../utils/gameStatus";
 
 export default function LibraryGameCard({ game }: ILibraryGameCard) {
   const isWishlisted = game.status === "wishlisted";
 
   return (
-    // TODO: link the card to the Game Details route (/games/:gameId)
-    <article className={`library-card library-card--${game.status}`}>
+    <GameLink gameId={game.id} className={`library-card library-card--${game.status}`}>
       <img src={game.cover} alt="" className="library-card-cover" draggable={false} />
 
       <span className="library-card-status">{statusLabels[game.status]}</span>
@@ -45,6 +39,6 @@ export default function LibraryGameCard({ game }: ILibraryGameCard) {
       </div>
 
       {!isWishlisted && <ProgressBar value={game.progress} className="library-card-progress" />}
-    </article>
+    </GameLink>
   );
 }

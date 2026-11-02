@@ -13,6 +13,18 @@
     width: 85%;
 }
 
+/* Every private page fades in and slides up slightly when it opens */
+.page-transition {
+    animation: page-in 0.45s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+@keyframes page-in {
+    from {
+        opacity: 0;
+        transform: translateY(14px);
+    }
+}
+
 
 @media (max-width: 768px) {
     .content {

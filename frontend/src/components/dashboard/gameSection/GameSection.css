@@ -8,6 +8,9 @@
     display: flex;
     gap: 18px;
     overflow-x: auto;
+    /* a scroll area clips what sticks out of it, so the top padding leaves room for the hover lift */
+    padding-top: 8px;
+    margin-top: -8px;
     padding-bottom: 10px;
     scroll-snap-type: x proximity;
     scrollbar-width: thin;

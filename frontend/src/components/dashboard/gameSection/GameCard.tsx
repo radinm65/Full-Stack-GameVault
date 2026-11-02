@@ -3,11 +3,12 @@
 import { IoStarOutline } from "react-icons/io5";
 
 import ProgressBar from "../../progressBar/ProgressBar";
+import GameLink from "../../games/gameLink/GameLink";
 import IGameCard from "../../../core/interfaces/props/dashboard/IGameCard.props";
 
 export default function GameCard({ game, variant }: IGameCard) {
   return (
-    <article className={`game-card game-card--${variant}`}>
+    <GameLink gameId={game.id} className={`game-card game-card--${variant}`}>
       <img src={game.cover} alt="" className="game-card-cover" draggable={false} />
 
       <div className="game-card-body">
@@ -40,6 +41,6 @@ export default function GameCard({ game, variant }: IGameCard) {
           </>
         )}
       </div>
-    </article>
+    </GameLink>
   );
 }

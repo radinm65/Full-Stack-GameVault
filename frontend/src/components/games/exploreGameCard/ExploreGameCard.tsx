@@ -3,12 +3,12 @@ import "./ExploreGameCard.css";
 import { IoFlame, IoStarOutline } from "react-icons/io5";
 import { LuClock2 } from "react-icons/lu";
 
+import GameLink from "../gameLink/GameLink";
 import IExploreGameCard from "../../../core/interfaces/props/games/IExploreGameCard.props";
 
 export default function ExploreGameCard({ game }: IExploreGameCard) {
   return (
-    // TODO: link the card to the Game Details route (/games/:gameId)
-    <article className={`explore-card ${game.trending ? "explore-card--trending" : ""}`}>
+    <GameLink gameId={game.id} className={`explore-card ${game.trending ? "explore-card--trending" : ""}`}>
       <img src={game.cover} alt="" className="explore-card-cover" draggable={false} />
 
       {game.trending && (
@@ -45,6 +45,6 @@ export default function ExploreGameCard({ game }: IExploreGameCard) {
         </p>
         <p className="explore-card-achievements">{game.achievements} Achievements</p>
       </div>
-    </article>
+    </GameLink>
   );
 }
