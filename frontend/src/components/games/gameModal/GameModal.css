@@ -24,6 +24,12 @@
     animation: game-modal-in 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
+/* Red scrollbar thumb on a transparent track, so the background image shows through.
+   scrollbar-color is inherited, so it covers the modal's scroll area and the screenshot row. */
+.game-modal {
+    scrollbar-color: var(--color-accent) transparent;
+}
+
 /* GameModal.tsx focuses the dialog itself when it opens, so no button looks selected */
 .game-modal:focus {
     outline: none;
