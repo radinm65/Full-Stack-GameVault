@@ -1,0 +1,120 @@
+/* The round badge: red when unlocked, grey when locked (like the design) */
+.achievement-badge {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60px;
+    height: 60px;
+    padding: 0;
+    border: 2px solid #4a5469;
+    border-radius: 50%;
+    background-color: #151c2e;
+    color: #7c8498;
+    cursor: help;
+    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.achievement-badge--unlocked {
+    border-color: var(--color-accent);
+    background-color: #111a2f;
+    color: var(--color-accent);
+}
+
+.achievement-badge:hover,
+.achievement-badge:focus-visible {
+    transform: scale(1.1);
+    box-shadow: 0 0 0 4px rgba(229, 57, 69, 0.18);
+    outline: none;
+}
+
+/* The small card shown on hover. Fixed, so the scrolling modal cannot cut it off. */
+.achievement-tooltip {
+    position: fixed;
+    z-index: 20;
+    padding: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 12px;
+    background-color: #0a0c12;
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.6);
+    color: var(--color-text);
+    pointer-events: none;
+    animation: achievement-tooltip-in 0.2s ease;
+}
+
+/* Opens upward: the top edge is the badge's top, so the card moves up by its own height */
+.achievement-tooltip--above {
+    transform: translateY(-100%);
+}
+
+@keyframes achievement-tooltip-in {
+    from {
+        opacity: 0;
+        translate: 0 6px;
+    }
+}
+
+.achievement-tooltip-head {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.achievement-tooltip-head h4 {
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+.achievement-tooltip-icon {
+    flex-shrink: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 44px;
+    height: 44px;
+    border: 2px solid #4a5469;
+    border-radius: 50%;
+    background-color: #151c2e;
+    color: #7c8498;
+}
+
+.achievement-tooltip-icon--unlocked {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+}
+
+.achievement-tooltip-description {
+    margin-top: 12px;
+    font-size: 14px;
+    line-height: 1.4;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.achievement-tooltip-fields {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 14px;
+    padding-top: 12px;
+    border-top: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.achievement-tooltip-fields div {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    font-size: 13px;
+}
+
+.achievement-tooltip-fields dt {
+    flex-shrink: 0;
+    color: var(--color-text-muted);
+}
+
+.achievement-tooltip-fields dd {
+    text-align: right;
+}
+
+.achievement-tooltip-fields .achievement-status--unlocked {
+    color: #3ddc84;
+}

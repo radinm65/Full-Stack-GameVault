@@ -37,8 +37,8 @@ const dummyFeaturedGame = {
   progress: 62,
   achievementsUnlocked: 38,
   achievementsTotal: 78,
-  // TODO: point to the real Game Details route (/games/:gameId)
-  continueTo: "/games",
+  // Opens the game modal (id 1 is Spider-Man in the games service)
+  continueTo: "/games?game=1",
 };
 
 // ! DUMMY DATA: high-level metrics, calculate on the server from stored data only
@@ -48,6 +48,9 @@ const dummyStats: IDashboardStat[] = [
   { id: "playtime", value: "224h", label: "Time Played", icon: IoTimerOutline },
   { id: "completed", value: "4", label: "Games Completed", icon: IoCheckmarkOutline },
 ];
+
+// ! DUMMY DATA: the game ids below are the ids the games service uses, because clicking a card opens
+// ! /games?game=<id>. The server sends real ids, so this only matters for the dummy data.
 
 // ! DUMMY DATA: library entries with status "Playing"
 const dummyPlayingGames: IDashboardGame[] = [
@@ -91,7 +94,7 @@ const dummyPlayingGames: IDashboardGame[] = [
     achievementsTotal: 60,
   },
   {
-    id: 4,
+    id: 5,
     title: "The Last of Us Part I",
     publisher: "Sony",
     year: 2022,
@@ -108,7 +111,7 @@ const dummyPlayingGames: IDashboardGame[] = [
 // ! DUMMY DATA: library entries with status "Saved" (in the library, not started yet)
 const dummySavedGames: IDashboardGame[] = [
   {
-    id: 5,
+    id: 4,
     title: "Red Dead Redemption 2",
     publisher: "Rockstar",
     year: 2019,
@@ -121,7 +124,7 @@ const dummySavedGames: IDashboardGame[] = [
     achievementsTotal: 52,
   },
   {
-    id: 6,
+    id: 5,
     title: "The Last of Us Part I",
     publisher: "Sony",
     year: 2022,
@@ -134,7 +137,7 @@ const dummySavedGames: IDashboardGame[] = [
     achievementsTotal: 36,
   },
   {
-    id: 7,
+    id: 3,
     title: "Forza Horizon 5",
     publisher: "Xbox Game Studios",
     year: 2021,
@@ -147,7 +150,7 @@ const dummySavedGames: IDashboardGame[] = [
     achievementsTotal: 60,
   },
   {
-    id: 8,
+    id: 2,
     title: "Cyberpunk 2077",
     publisher: "CD Projekt",
     year: 2020,
@@ -164,7 +167,7 @@ const dummySavedGames: IDashboardGame[] = [
 // ! DUMMY DATA: wishlist entries (price is only shown here)
 const dummyWishlistGames: IDashboardGame[] = [
   {
-    id: 9,
+    id: 1,
     title: "Marvel's Spider-Man Remastered",
     publisher: "Sony",
     year: 2021,
@@ -178,7 +181,7 @@ const dummyWishlistGames: IDashboardGame[] = [
     price: 80,
   },
   {
-    id: 10,
+    id: 3,
     title: "Forza Horizon 5",
     publisher: "Xbox Game Studios",
     year: 2021,
@@ -192,7 +195,7 @@ const dummyWishlistGames: IDashboardGame[] = [
     price: 96,
   },
   {
-    id: 11,
+    id: 4,
     title: "Red Dead Redemption 2",
     publisher: "Rockstar",
     year: 2019,
@@ -206,7 +209,7 @@ const dummyWishlistGames: IDashboardGame[] = [
     price: 50,
   },
   {
-    id: 12,
+    id: 2,
     title: "Cyberpunk 2077",
     publisher: "CD Projekt",
     year: 2020,
@@ -330,25 +333,22 @@ export default function Dashboard() {
       <FeaturedBanner {...dummyFeaturedGame} />
       <StatsRow stats={dummyStats} />
 
-      {/* TODO: link to the Library tab filtered by status once /games supports ?tab=library&status=playing */}
       <GameSection
         title="Currently Playing"
         linkText="Games"
-        linkTo="/games"
+        linkTo="/games?tab=library&status=playing"
         games={dummyPlayingGames}
       />
-      {/* TODO: link to the Library tab filtered by status once /games supports ?tab=library&status=saved */}
       <GameSection
         title="Want To Play"
         linkText="Library"
-        linkTo="/games"
+        linkTo="/games?tab=library&status=saved"
         games={dummySavedGames}
       />
-      {/* TODO: "Wishlist" should open the Wishlist modal on the Games page instead of navigating */}
       <GameSection
         title="Wishlist"
         linkText="Wishlist"
-        linkTo="/games"
+        linkTo="/games?tab=library&wishlist=open"
         games={dummyWishlistGames}
         variant="wishlist"
       />

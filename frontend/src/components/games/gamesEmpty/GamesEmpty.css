@@ -1,0 +1,32 @@
+.games-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    padding: 56px 16px;
+    border: var(--border);
+    border-radius: 12px;
+    background-color: var(--color-surface);
+    text-align: center;
+}
+
+.games-empty p {
+    color: var(--color-text-muted);
+}
+
+.games-empty button {
+    height: 36px;
+    padding: 0 20px;
+    border: 1px solid var(--color-accent);
+    border-radius: 18px;
+    background: none;
+    color: var(--color-accent);
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.games-empty button:hover {
+    background-color: var(--color-accent);
+    color: #ffffff;
+}

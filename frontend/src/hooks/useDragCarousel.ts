@@ -1,21 +1,17 @@
 import { useRef, useState } from "react";
-import type {
-  CSSProperties,
-  Dispatch,
-  MouseEvent,
-  PointerEvent,
-  SetStateAction,
-} from "react";
+import type { CSSProperties, MouseEvent, PointerEvent } from "react";
 
 const DRAG_START_DISTANCE = 5;
 const SWIPE_THRESHOLD = 0.15;
 
 // Mouse / touch drag for a track of full-width slides.
 // Spread `trackHandlers` and `trackStyle` on the track, attach `carouselRef` to its wrapper.
+// `setCurrentSlide` receives the slide number to show. The setter from useState works as is:
+//   const [currentSlide, setCurrentSlide] = useState(0);
 export default function useDragCarousel(
   count: number,
   currentSlide: number,
-  setCurrentSlide: Dispatch<SetStateAction<number>>,
+  setCurrentSlide: (slide: number) => void,
 ) {
   const [dragOffset, setDragOffset] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
@@ -55,9 +51,9 @@ export default function useDragCarousel(
 
     if (hasDragged.current) {
       if (delta < -width * SWIPE_THRESHOLD) {
-        setCurrentSlide((prev) => Math.min(prev + 1, count - 1));
+        setCurrentSlide(Math.min(currentSlide + 1, count - 1));
       } else if (delta > width * SWIPE_THRESHOLD) {
-        setCurrentSlide((prev) => Math.max(prev - 1, 0));
+        setCurrentSlide(Math.max(currentSlide - 1, 0));
       }
     }
 
