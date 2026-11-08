@@ -1,0 +1,157 @@
+.community-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.sidebar-card {
+    padding: 20px;
+    border: var(--border);
+    border-radius: 16px;
+    background-color: var(--color-surface);
+}
+
+.sidebar-card h2 {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.sidebar-card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.sidebar-new-message {
+    flex-shrink: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    margin: -2px -5px 0 0;
+    border: none;
+    border-radius: 50%;
+    background-color: var(--color-accent);
+    color: #ffffff;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.sidebar-new-message:hover,
+.sidebar-new-message:focus-visible {
+    background-color: var(--color-accent-hover);
+    transform: scale(1.1);
+    outline: none;
+}
+
+.sidebar-card-text {
+    margin-top: 14px;
+    font-size: 12px;
+    line-height: 1.6;
+    color: var(--color-text-muted);
+}
+
+/* New messages: brighter than the other card texts, with a pulsing red dot */
+.sidebar-messages {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+}
+
+.sidebar-messages--new {
+    font-weight: 600;
+    color: var(--color-text);
+}
+
+.sidebar-unread-dot {
+    flex-shrink: 0;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: var(--color-accent);
+    animation: sidebar-unread-pulse 1.6s ease-out infinite;
+}
+
+@keyframes sidebar-unread-pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(229, 57, 69, 0.7);
+    }
+
+    70%,
+    100% {
+        box-shadow: 0 0 0 9px rgba(229, 57, 69, 0);
+    }
+}
+
+/* Friends online */
+
+.sidebar-card--friends {
+    padding-bottom: 28px;
+}
+
+.sidebar-card--friends ul {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    margin-top: 12px;
+}
+
+.sidebar-card--friends li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.sidebar-card--friends li div {
+    flex: 1;
+    min-width: 0;
+}
+
+.sidebar-card--friends li p:first-child {
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.sidebar-card--friends li p:last-child {
+    margin-top: 2px;
+    font-size: 11px;
+    color: var(--color-text-muted);
+}
+
+.sidebar-online-dot {
+    flex-shrink: 0;
+    width: 8px;
+    height: 8px;
+    margin-right: 4px;
+    border-radius: 50%;
+    background-color: #6fcf97;
+}
+
+/* Good games. Good company. */
+
+.sidebar-guide-title {
+    font-size: 20px;
+    text-transform: uppercase;
+}
+
+.sidebar-guide-title + .sidebar-card-text {
+    margin-top: 16px;
+}
+
+.sidebar-text-narrow {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .sidebar-text-wide {
+        display: none;
+    }
+
+    .sidebar-text-narrow {
+        display: inline;
+    }
+}

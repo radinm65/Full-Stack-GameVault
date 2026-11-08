@@ -5,10 +5,17 @@ body {
   font-family: var(--font-primary);
 }
 
-/* Red scrollbar. `scrollbar-color` is inherited, so this covers every scroll area */
+/* Red scrollbar. The scrollbar of the page itself (the html element) has a dark track, like the page. */
 html {
   scrollbar-width: thin;
   scrollbar-color: var(--color-accent) var(--color-bg);
+}
+
+/* Every other scrollbar (modals, lists, rows that scroll) has a transparent track, so only the red thumb
+   shows. `body *` is everything inside the page, but not the html element, so the page's own scrollbar
+   above is not affected. */
+body * {
+  scrollbar-color: var(--color-accent) transparent;
 }
 
 /* Fallback for browsers without scrollbar-color (older Safari) */
@@ -20,6 +27,10 @@ html {
 
   ::-webkit-scrollbar-track {
     background: var(--color-bg);
+  }
+
+  body *::-webkit-scrollbar-track {
+    background: transparent;
   }
 
   ::-webkit-scrollbar-thumb {

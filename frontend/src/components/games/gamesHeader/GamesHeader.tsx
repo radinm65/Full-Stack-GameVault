@@ -2,6 +2,7 @@ import "./GamesHeader.css";
 
 import IGamesHeader from "../../../core/interfaces/props/games/IGamesHeader.props";
 
+// The page title block of the private pages: eyebrow, title, subtitle and, when given, a status line
 export default function GamesHeader({
   title,
   subtitle,
@@ -9,6 +10,8 @@ export default function GamesHeader({
   statusText,
   action,
 }: IGamesHeader) {
+  const hasStatus = StatusIcon !== undefined && statusText !== undefined;
+
   return (
     <div className="games-header">
       <div className="games-header-text">
@@ -17,13 +20,17 @@ export default function GamesHeader({
         <p className="games-header-subtitle">{subtitle}</p>
       </div>
 
-      <div className="games-header-status">
-        <p>
-          <StatusIcon size={20} aria-hidden="true" />
-          {statusText}
-        </p>
-        {action}
-      </div>
+      {(hasStatus || action) && (
+        <div className="games-header-status">
+          {hasStatus && (
+            <p>
+              <StatusIcon size={20} aria-hidden="true" />
+              {statusText}
+            </p>
+          )}
+          {action}
+        </div>
+      )}
     </div>
   );
 }

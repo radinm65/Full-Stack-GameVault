@@ -1,0 +1,86 @@
+.community-page {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+}
+
+.community-toolbar {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+}
+
+/* The chips in the design are a little smaller and closer together than the Games filters */
+.community-chips .filter-chips {
+    gap: 8px;
+}
+
+.community-chips .filter-chip {
+    font-size: 12px;
+}
+
+/* Feed on the left (888px at a 1440px screen), the three cards on the right (320px) */
+.community-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 320px;
+    grid-template-areas: "feed sidebar";
+    column-gap: 24px;
+    align-items: start;
+}
+
+.community-feed {
+    grid-area: feed;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.community-layout .community-sidebar {
+    grid-area: sidebar;
+}
+
+.community-sentinel {
+    height: 1px;
+}
+
+.community-text-narrow {
+    display: none;
+}
+
+/* Only the phone design shows this line */
+.community-end {
+    display: none;
+    font-size: 14px;
+    color: var(--color-text-muted);
+}
+
+@media (max-width: 1100px) {
+    /* The cards come first, then the composer and the feed, like the phone design */
+    .community-layout {
+        grid-template-columns: minmax(0, 1fr);
+        grid-template-areas:
+            "sidebar"
+            "feed";
+        row-gap: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .community-page,
+    .community-toolbar {
+        gap: 24px;
+    }
+
+    .community-text-wide {
+        display: none;
+    }
+
+    .community-text-narrow {
+        display: inline;
+    }
+
+    .community-end {
+        display: block;
+        margin-top: 4px;
+    }
+}

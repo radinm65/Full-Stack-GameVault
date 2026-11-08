@@ -9,14 +9,13 @@ import {
   IoCopyOutline,
   IoHeart,
   IoHeartOutline,
-  IoStar,
-  IoStarHalf,
-  IoStarOutline,
 } from "react-icons/io5";
 
 import AchievementBadge from "../achievementBadge/AchievementBadge";
+import GameReviews from "../gameReviews/GameReviews";
 import LibraryGameCard from "../libraryGameCard/LibraryGameCard";
 import ProgressBar from "../../progressBar/ProgressBar";
+import StarRating from "../../starRating/StarRating";
 import IGameModal from "../../../core/interfaces/props/games/IGameModal.props";
 import useLoadData from "../../../hooks/useLoadData";
 import { getGameDetails } from "../../../services/gameDetailsService";
@@ -24,18 +23,6 @@ import { statusLabels, timeAgo } from "../../../utils/gameStatus";
 
 // How long the closing animation runs. Keep in sync with game-modal-out in GameModal.css.
 const CLOSE_DURATION = 250;
-
-// Five stars: full, half or empty, depending on the value (4.7 shows 4 full and a half)
-function Stars({ value, size }: { value: number; size: number }) {
-  return (
-    <span className="game-modal-stars" aria-label={`${value} out of 5 stars`}>
-      {[1, 2, 3, 4, 5].map((star) => {
-        const Icon = value >= star ? IoStar : value >= star - 0.5 ? IoStarHalf : IoStarOutline;
-        return <Icon key={star} size={size} aria-hidden="true" />;
-      })}
-    </span>
-  );
-}
 
 // TODO: save the heart to the wishlist through the API
 function HeartButton() {
@@ -169,7 +156,7 @@ export default function GameModal({ gameId, onClose }: IGameModal) {
                   <p className="game-modal-publisher">{game.publisher}</p>
                   <p className="game-modal-year">{game.year}</p>
                   <p className="game-modal-rating">
-                    {game.rating} <Stars value={game.rating} size={22} />
+                    {game.rating} <StarRating value={game.rating} size={22} className="game-modal-stars" />
                   </p>
 
                   {!isWishlisted && (
@@ -271,7 +258,7 @@ export default function GameModal({ gameId, onClose }: IGameModal) {
                     <div className="game-modal-score">
                       <strong>{game.rating}</strong>
                       <div>
-                        <Stars value={game.rating} size={18} />
+                        <StarRating value={game.rating} size={18} className="game-modal-stars" />
                         <p>Based on {game.ratingCount} Ratings</p>
                       </div>
                     </div>
@@ -289,31 +276,7 @@ export default function GameModal({ gameId, onClose }: IGameModal) {
               </section>
 
               <section className="game-modal-section game-modal-section--reviews" aria-labelledby="game-modal-reviews">
-                <div className="game-modal-section-heading">
-                  <h3 id="game-modal-reviews">Reviews</h3>
-                  {/* TODO: open the review form */}
-                  <button type="button" className="game-modal-add-review">
-                    Add Review +
-                  </button>
-                </div>
-
-                <div className="game-modal-reviews">
-                  {game.reviews.map((review) => (
-                    <article key={review.id} className="game-modal-review">
-                      <span className="game-modal-avatar" aria-hidden="true">
-                        {review.author[0]}
-                      </span>
-                      <div className="game-modal-review-author">
-                        <p>
-                          <strong>{review.author}</strong>
-                          <span>Posted {review.postedAgo}</span>
-                        </p>
-                        <Stars value={review.stars} size={18} />
-                      </div>
-                      <p className="game-modal-review-text">{review.text}</p>
-                    </article>
-                  ))}
-                </div>
+                <GameReviews reviews={game.reviews} />
               </section>
 
               <section className="game-modal-section game-modal-section--related" aria-labelledby="game-modal-related">
