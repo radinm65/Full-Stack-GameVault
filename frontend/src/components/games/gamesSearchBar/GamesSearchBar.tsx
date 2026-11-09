@@ -27,7 +27,9 @@ export default function GamesSearchBar({
         />
       </form>
 
-      <FilterSelect label="Sort" value={sortValue} options={sortOptions} onChange={onSortChange} />
+      {sortValue !== undefined && sortOptions && onSortChange && (
+        <FilterSelect label="Sort" value={sortValue} options={sortOptions} onChange={onSortChange} />
+      )}
     </div>
   );
 }

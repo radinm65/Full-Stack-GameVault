@@ -1,0 +1,99 @@
+.community-composer {
+    border: var(--border);
+    border-radius: 18px;
+    background-color: var(--color-surface);
+    overflow: hidden;
+}
+
+.community-composer-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-height: 80px;
+    padding: 20px;
+}
+
+.community-composer textarea {
+    flex: 1;
+    min-width: 0;
+    max-height: 120px;
+    border: none;
+    outline: none;
+    background: transparent;
+    resize: none;
+    /* grows with the text, so a long placeholder or caption is never cut off (newer browsers) */
+    field-sizing: content;
+    font-family: var(--font-primary);
+    font-size: 14px;
+    line-height: 1.4;
+    color: var(--color-text);
+}
+
+.community-composer textarea::placeholder {
+    color: var(--color-text-muted);
+}
+
+.community-composer-post {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    width: 92px;
+    height: 38px;
+    border: none;
+    border-radius: 19px;
+    background-color: var(--color-accent);
+    color: #ffffff;
+    font-family: var(--font-heading);
+    font-style: italic;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.25s ease, filter 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* On hover the button gets a little bigger and brighter */
+.community-composer-post:hover,
+.community-composer-post:focus-visible {
+    transform: scale(1.08);
+    filter: brightness(1.2);
+    box-shadow: 0 6px 18px rgba(229, 57, 69, 0.4);
+    outline: none;
+}
+
+.community-composer-post svg {
+    transition: transform 0.3s ease;
+}
+
+/* The + turns into an x while the box is open */
+.community-composer-post--open svg {
+    transform: rotate(45deg);
+}
+
+/* The share box under the row. It opens by animating the row height from 0 to its content. */
+.community-share {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.community-share--open {
+    grid-template-rows: 1fr;
+}
+
+.community-share-inner {
+    min-height: 0;
+    overflow: hidden;
+}
+
+@media (max-width: 768px) {
+    .community-composer-row {
+        padding: 18px 16px;
+    }
+
+    .community-composer-post {
+        height: 40px;
+        border-radius: 20px;
+    }
+}

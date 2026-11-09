@@ -16,8 +16,10 @@
     max-width: none;
     max-height: none;
     padding: 0;
-    border: 1px solid rgba(110, 125, 160, 0.35);
+    /* Accent border and a soft shadow around the panel */
+    border: 1px solid var(--color-accent);
     border-radius: 10px;
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.45), 0 0 22px rgba(229, 57, 69, 0.2);
     background-color: #0a0708;
     color: var(--color-text);
     overflow: hidden;
@@ -25,9 +27,16 @@
 }
 
 /* Red scrollbar thumb on a transparent track, so the background image shows through.
-   scrollbar-color is inherited, so it covers the modal's scroll area and the screenshot row. */
+   scrollbar-color is inherited, so it covers the modal's scroll area and the screenshot row.
+   scrollbar-width is not inherited, so the scroll area sets it itself: "thin" has no arrow buttons,
+   which leaves only the thumb visible. */
 .game-modal {
     scrollbar-color: var(--color-accent) transparent;
+}
+
+.game-modal-scroll,
+.game-modal-screenshots {
+    scrollbar-width: thin;
 }
 
 /* GameModal.tsx focuses the dialog itself when it opens, so no button looks selected */
@@ -35,8 +44,9 @@
     outline: none;
 }
 
+/* The page behind the modal is blurred and dimmed (60% black, a little lighter than before) */
 .game-modal::backdrop {
-    background-color: rgba(0, 0, 0, 0.78);
+    background-color: rgba(0, 0, 0, 0.6);
     backdrop-filter: blur(4px);
     animation: game-modal-fade-in 0.4s ease;
 }
@@ -598,6 +608,7 @@ body:has(.game-modal) {
     display: grid;
     grid-template-columns: minmax(0, 504fr) minmax(0, 550fr);
     column-gap: 114px;
+    row-gap: 40px;
 }
 
 .game-modal-review {
@@ -608,8 +619,8 @@ body:has(.game-modal) {
     align-items: center;
 }
 
-/* The line between the two reviews, in the middle of the gap */
-.game-modal-review + .game-modal-review::before {
+/* The line between the two columns, in the middle of the gap. Every second review is in the right column. */
+.game-modal-review:nth-child(even)::before {
     content: "";
     position: absolute;
     top: 28px;
@@ -708,7 +719,7 @@ body:has(.game-modal) {
         column-gap: 48px;
     }
 
-    .game-modal-review + .game-modal-review::before {
+    .game-modal-review:nth-child(even)::before {
         left: -24px;
     }
 
@@ -819,7 +830,7 @@ body:has(.game-modal) {
         row-gap: 32px;
     }
 
-    .game-modal-review + .game-modal-review::before {
+    .game-modal-review:nth-child(even)::before {
         display: none;
     }
 
