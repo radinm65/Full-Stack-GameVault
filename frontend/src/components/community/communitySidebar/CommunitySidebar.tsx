@@ -1,33 +1,14 @@
 import "./CommunitySidebar.css";
 
-import { IoAdd } from "react-icons/io5";
-
 import CommunityAvatar from "../communityAvatar/CommunityAvatar";
+import CommunityMessages from "../communityMessages/CommunityMessages";
 import ICommunitySidebar from "../../../core/interfaces/props/community/ICommunitySidebar.props";
 
 // The three cards next to the feed (above it on a phone)
-export default function CommunitySidebar({ friends, unreadMessages }: ICommunitySidebar) {
+export default function CommunitySidebar({ friends, unreadMessages, chatRequest }: ICommunitySidebar) {
   return (
     <aside className="community-sidebar">
-      <section className="sidebar-card">
-        <div className="sidebar-card-top">
-          <h2>Message Friends</h2>
-          {/* TODO: open the new message screen */}
-          <button type="button" className="sidebar-new-message" aria-label="Start a new message">
-            <IoAdd size={20} />
-          </button>
-        </div>
-
-        {/* The number of new messages, with a red dot that pulses to catch the eye */}
-        {unreadMessages !== null && (
-          <p className={`sidebar-card-text sidebar-messages ${unreadMessages > 0 ? "sidebar-messages--new" : ""}`}>
-            {unreadMessages > 0 && <span className="sidebar-unread-dot" aria-hidden="true" />}
-            {unreadMessages === 0
-              ? "No new messages"
-              : `${unreadMessages} new ${unreadMessages === 1 ? "message" : "messages"}`}
-          </p>
-        )}
-      </section>
+      <CommunityMessages unreadMessages={unreadMessages} chatRequest={chatRequest} />
 
       <section className="sidebar-card sidebar-card--friends">
         <h2>FRIENDS ONLINE</h2>

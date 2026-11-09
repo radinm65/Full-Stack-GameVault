@@ -14,7 +14,9 @@ import useDelayedInput from "../../../hooks/useDelayedInput";
 import useInfiniteScroll from "../../../hooks/useInfiniteScroll";
 import useLoadData from "../../../hooks/useLoadData";
 import useUrlFilters from "../../../hooks/useUrlFilters";
+import type IChatRequest from "../../../core/interfaces/models/community/IChatRequest";
 import type ICommunityPost from "../../../core/interfaces/models/community/ICommunityPost";
+import type { IPostAuthor } from "../../../core/interfaces/models/community/ICommunityPost";
 import type { IShareChoice } from "../../../core/interfaces/models/community/IShareable";
 import {
   createCommunityPost,
@@ -24,7 +26,7 @@ import {
 } from "../../../services/communityService";
 
 // ! DUMMY DATA: signed-in user, replace with GET /api/auth/me
-const dummyUser = { firstName: "Nova", initial: "N" };
+const dummyUser = { firstName: "Nova", handle: "novastrider", initial: "N" };
 
 // The URL query string is the whole state of this page: /community?feed=reviews&q=kai
 // Nothing selected (no feed in the URL) shows the people you follow.
@@ -60,6 +62,23 @@ export default function Community() {
   const sharePost = async (choice: IShareChoice, caption: string) => {
     const post = await createCommunityPost(choice, caption);
     setNewPosts((current) => [post, ...current]);
+  };
+
+  // "Chat" in the menu of a post: the message card opens on the chat with the author of that post
+  const [chatRequest, setChatRequest] = useState<IChatRequest | null>(null);
+
+  const startChat = (author: IPostAuthor) => {
+    setChatRequest({
+      conversation: {
+        id: author.id,
+        name: author.name,
+        handle: author.handle,
+        initial: author.initial,
+        lastMessage: "",
+        // ! DUMMY DATA: the server knows if they are online
+        isOnline: true,
+      },
+    });
   };
 
   // Clicking the chip that is already selected unselects it
@@ -112,7 +131,11 @@ export default function Community() {
           )}
 
           {[...newPosts, ...(posts ?? [])].map((post) => (
-            <CommunityPostCard key={post.id} post={post} />
+            <CommunityPostCard
+              key={post.id}
+              post={post}
+              onChat={post.author.handle === dummyUser.handle ? undefined : () => startChat(post.author)}
+            />
           ))}
 
           {hasMore && <div ref={sentinelRef} className="community-sentinel" />}
@@ -122,7 +145,7 @@ export default function Community() {
           )}
         </section>
 
-        <CommunitySidebar friends={friends} unreadMessages={unreadMessages} />
+        <CommunitySidebar friends={friends} unreadMessages={unreadMessages} chatRequest={chatRequest} />
       </div>
     </div>
   );

@@ -1,5 +1,6 @@
 import type ICommunityPost from "../core/interfaces/models/community/ICommunityPost";
 import type { IPostAuthor } from "../core/interfaces/models/community/ICommunityPost";
+import type IConversation from "../core/interfaces/models/community/IConversation";
 import type IOnlineFriend from "../core/interfaces/models/community/IOnlineFriend";
 import type { IShareChoice, IShareables } from "../core/interfaces/models/community/IShareable";
 import type IPage from "../core/interfaces/models/shared/IPage";
@@ -232,6 +233,49 @@ export async function createCommunityPost(
 // ! DUMMY DATA: how many messages the user has not read yet. Replace with GET /api/messages/unread-count
 export async function getUnreadMessageCount(): Promise<number> {
   return 3;
+}
+
+// ! DUMMY DATA: everyone the user can message. Replace with GET /api/messages/conversations (cursor)
+const lastMessages = [
+  "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod",
+  "Are you up for a few rounds tonight? I just finished the last chapter.",
+  "That boss fight was unreal, I need to show you the build I used.",
+  "Thanks for the tip about the hidden shortcut, it saved me an hour!",
+];
+const friendNames = [
+  "Radinm123", "Kai", "Mira", "Jules", "Aria", "Leo", "Sage", "Finn", "Zoe", "Max",
+  "Ivy", "Theo", "Luna", "Rex", "Nina", "Omar", "Cleo", "Dax", "Yuki", "Hana",
+];
+const dummyConversations: IConversation[] = friendNames.map((name, index) => ({
+  id: name.toLowerCase(),
+  name,
+  handle: name.toLowerCase(),
+  initial: name[0].toUpperCase(),
+  lastMessage: lastMessages[index % lastMessages.length],
+  isOnline: index % 3 !== 2,
+}));
+
+// The mock page size. The server decides it, the client never sends one.
+const CONVERSATIONS_PAGE_SIZE = 6;
+
+// `queryString` can hold q (a name to search for)
+// ! The mock cursor is an offset, the real one is whatever the server returns (opaque to the client).
+export async function getConversations(
+  queryString: string,
+  cursor: string | null,
+): Promise<IPage<IConversation>> {
+  const search = (new URLSearchParams(queryString).get("q") ?? "").trim().toLowerCase();
+  const matches = dummyConversations.filter((conversation) =>
+    conversation.name.toLowerCase().includes(search),
+  );
+
+  const start = Number(cursor ?? 0);
+  const end = start + CONVERSATIONS_PAGE_SIZE;
+
+  return {
+    items: matches.slice(start, end),
+    nextCursor: end < matches.length ? String(end) : null,
+  };
 }
 
 // ! DUMMY DATA: friends that are online right now (presence)

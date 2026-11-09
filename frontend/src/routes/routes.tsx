@@ -67,6 +67,11 @@ const router = createBrowserRouter([
         path: "profile",
         element: <Profile />,
       },
+      {
+        // The profile of another player, e.g. /profile/kaiplays
+        path: "profile/:handle",
+        element: <Profile />,
+      },
     ],
   },
   {
