@@ -1,0 +1,63 @@
+.collections-page {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+}
+
+/* The red button next to the search box */
+.collections-add {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    height: 40px;
+    padding: 0 18px;
+    border: none;
+    border-radius: 20px;
+    background-color: var(--color-accent);
+    color: #ffffff;
+    font-family: var(--font-heading);
+    font-style: italic;
+    font-size: 15px;
+    font-weight: 600;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: transform 0.25s ease, filter 0.25s ease, box-shadow 0.25s ease;
+}
+
+.collections-add:hover,
+.collections-add:focus-visible {
+    transform: scale(1.06);
+    filter: brightness(1.2);
+    box-shadow: 0 6px 18px rgba(229, 57, 69, 0.4);
+    outline: none;
+}
+
+/* As many cards in a row as fit, each at least 340px wide (about 395px at a 1440px screen) */
+.collections-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 24px;
+}
+
+.collections-sentinel {
+    height: 1px;
+}
+
+@media (max-width: 768px) {
+    .collections-page {
+        gap: 24px;
+    }
+
+    .collections-add {
+        height: 42px;
+        padding: 0 16px;
+        font-size: 13px;
+    }
+
+    .collections-grid {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 24px;
+    }
+}

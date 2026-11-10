@@ -12,6 +12,7 @@ export default function GamesSearchBar({
   sortValue,
   sortOptions,
   onSortChange,
+  action,
 }: IGamesSearchBar) {
   return (
     <div className="games-search-bar">
@@ -30,6 +31,8 @@ export default function GamesSearchBar({
       {sortValue !== undefined && sortOptions && onSortChange && (
         <FilterSelect label="Sort" value={sortValue} options={sortOptions} onChange={onSortChange} />
       )}
+
+      {action}
     </div>
   );
 }

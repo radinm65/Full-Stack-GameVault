@@ -1,3 +1,5 @@
+import type { ReactNode } from "react";
+
 import type { IFilterOption } from "../shared/IFilterSelect.props";
 
 interface IGamesSearchBar {
@@ -8,6 +10,8 @@ interface IGamesSearchBar {
   sortValue?: string;
   sortOptions?: IFilterOption[];
   onSortChange?: (sort: string) => void;
+  // Anything else that belongs next to the search box, e.g. the "Add Collection" button
+  action?: ReactNode;
 }
 
 export default IGamesSearchBar;
