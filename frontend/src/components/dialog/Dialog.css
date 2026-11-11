@@ -1,0 +1,147 @@
+.dialog {
+    /* The global reset sets every margin to 0, which removes the automatic centering of a modal
+       dialog. inset + margin: auto centers it again. */
+    inset: 0;
+    margin: auto;
+    width: min(460px, calc(100vw - 32px));
+    max-width: none;
+    height: fit-content;
+    max-height: calc(100vh - 40px);
+    padding: 28px;
+    /* Same look as the game modal: accent border and a soft shadow */
+    border: 1px solid var(--color-accent);
+    border-radius: 18px;
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.45), 0 0 22px rgba(229, 57, 69, 0.2);
+    background-color: var(--color-surface);
+    color: var(--color-text);
+    overflow: hidden;
+    animation: dialog-in 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* Dialog.tsx focuses the dialog itself when nothing inside asks for the focus */
+.dialog:focus {
+    outline: none;
+}
+
+.dialog::backdrop {
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    animation: dialog-fade-in 0.35s ease;
+}
+
+/* Added by Dialog.tsx while it closes. The duration must match CLOSE_DURATION there. */
+.dialog--closing {
+    animation: dialog-out 0.25s ease forwards;
+}
+
+.dialog--closing::backdrop {
+    animation: dialog-fade-out 0.25s ease forwards;
+}
+
+@keyframes dialog-in {
+    from {
+        opacity: 0;
+        transform: translateY(24px) scale(0.97);
+    }
+}
+
+@keyframes dialog-out {
+    to {
+        opacity: 0;
+        transform: translateY(16px) scale(0.98);
+    }
+}
+
+@keyframes dialog-fade-in {
+    from {
+        opacity: 0;
+    }
+}
+
+@keyframes dialog-fade-out {
+    to {
+        opacity: 0;
+    }
+}
+
+/* The dialog only blocks the page for the keyboard, so lock the scroll as well */
+body:has(.dialog) {
+    overflow: hidden;
+}
+
+.dialog-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+.dialog-header h2 {
+    font-size: 26px;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.dialog-close {
+    flex-shrink: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 34px;
+    height: 34px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 50%;
+    background: none;
+    color: var(--color-text);
+    cursor: pointer;
+    transition: border-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+}
+
+.dialog-close:hover,
+.dialog-close:focus-visible {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+    transform: rotate(90deg);
+    outline: none;
+}
+
+/* Buttons at the bottom of a dialog: the main one (red) and the quiet one */
+.dialog-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 24px;
+}
+
+.dialog-button {
+    height: 40px;
+    padding: 0 22px;
+    border: 1px solid var(--color-accent);
+    border-radius: 20px;
+    background: none;
+    color: var(--color-text);
+    font-family: var(--font-heading);
+    font-style: italic;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.25s ease, filter 0.25s ease, opacity 0.25s ease, background-color 0.25s ease;
+}
+
+.dialog-button--main {
+    background-color: var(--color-accent);
+    color: #ffffff;
+}
+
+.dialog-button:hover:not(:disabled),
+.dialog-button:focus-visible {
+    transform: scale(1.05);
+    filter: brightness(1.2);
+    outline: none;
+}
+
+.dialog-button:disabled {
+    opacity: 0.45;
+    cursor: default;
+}
