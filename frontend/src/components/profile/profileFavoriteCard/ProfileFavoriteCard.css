@@ -1,0 +1,111 @@
+.profile-favorite {
+    position: relative;
+    aspect-ratio: 400 / 310;
+    border: var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    color: #ffffff;
+    background-color: var(--color-surface);
+}
+
+.profile-favorite-cover {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.profile-favorite::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top,
+            rgba(0, 0, 0, 0.92) 0%,
+            rgba(0, 0, 0, 0.55) 40%,
+            transparent 70%);
+    pointer-events: none;
+}
+
+.profile-favorite-body {
+    position: absolute;
+    inset: auto 0 0 0;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 20px 24px;
+}
+
+.profile-favorite-body h3 {
+    font-size: 28px;
+    font-weight: 600;
+    line-height: 1.1;
+}
+
+.profile-favorite-genre {
+    padding: 0 12px;
+    border: 1.5px solid var(--color-accent);
+    border-radius: 12px;
+    background-color: rgba(8, 10, 15, 0.6);
+    color: var(--color-accent);
+    font-size: 12px;
+    font-style: italic;
+    line-height: 1.7;
+}
+
+.profile-favorite-row {
+    align-self: stretch;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 12px;
+}
+
+.profile-favorite-rating {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.75);
+}
+
+.profile-favorite-rating svg,
+.profile-favorite-hours svg {
+    color: var(--color-accent);
+}
+
+.profile-favorite-hours {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-heading);
+    font-style: italic;
+    font-size: 18px;
+}
+
+.profile-favorite-hours strong {
+    font-size: 32px;
+    font-weight: 600;
+    line-height: 1;
+}
+
+.profile-favorite-meta {
+    align-items: center;
+    font-size: 13px;
+}
+
+.profile-favorite-meta p:last-child {
+    flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+    .profile-favorite {
+        aspect-ratio: 370 / 305;
+    }
+
+    .profile-favorite-body h3 {
+        font-size: 26px;
+    }
+}

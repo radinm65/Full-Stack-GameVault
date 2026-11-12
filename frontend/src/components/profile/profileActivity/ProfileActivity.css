@@ -1,0 +1,27 @@
+.profile-activity {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    list-style: none;
+}
+
+.profile-activity-item {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 16px 20px;
+    border: var(--border);
+    border-left: 3px solid var(--color-accent);
+    border-radius: 12px;
+    background-color: var(--color-surface);
+}
+
+.profile-activity-item h3 {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.profile-activity-item p {
+    font-size: 12px;
+    color: var(--color-text-muted);
+}
