@@ -18,6 +18,12 @@
     animation: dialog-in 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
+.dialog--wide {
+    width: min(580px, calc(100vw - 32px));
+    overflow-y: auto;
+    scrollbar-width: thin;
+}
+
 /* Dialog.tsx focuses the dialog itself when nothing inside asks for the focus */
 .dialog:focus {
     outline: none;

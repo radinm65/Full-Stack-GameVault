@@ -34,7 +34,8 @@ export default function PrivateNav() {
           <Link
             key={path}
             to={path}
-            className={`link ${currentRoute === path ? "active" : "not-active"}`}
+            // /profile/kaiplays belongs to Profile too
+            className={`link ${currentRoute === path || currentRoute.startsWith(`${path}/`) ? "active" : "not-active"}`}
           >
             <Icon size={30}  />
             <p>{label}</p>
