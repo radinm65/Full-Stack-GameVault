@@ -6,7 +6,7 @@ import CommunityAvatar from "../../community/communityAvatar/CommunityAvatar";
 import IProfileHero from "../../../core/interfaces/props/profile/IProfileHero.props";
 
 // The profile card: banner, avatar, name, a few facts, the bio and (on your own profile) the edit button
-export default function ProfileHero({ profile }: IProfileHero) {
+export default function ProfileHero({ profile, onEdit }: IProfileHero) {
   return (
     <section className="profile-hero" aria-label={`${profile.name}'s profile`}>
       <div className="profile-banner">
@@ -15,7 +15,11 @@ export default function ProfileHero({ profile }: IProfileHero) {
 
       <div className="profile-info">
         <div className="profile-avatar">
-          <CommunityAvatar initial={profile.initial} size={88} />
+          {profile.avatar ? (
+            <img src={profile.avatar} alt="" className="profile-avatar-image" draggable={false} />
+          ) : (
+            <CommunityAvatar initial={profile.initial} size={88} />
+          )}
         </div>
 
         <h2 className="profile-name">{profile.name}</h2>
@@ -33,8 +37,7 @@ export default function ProfileHero({ profile }: IProfileHero) {
         </div>
 
         {profile.isOwn && (
-          // TODO: open the edit profile form
-          <button type="button" className="profile-edit">
+          <button type="button" className="profile-edit" onClick={onEdit}>
             Edit Profile <IoPencilOutline size={18} />
           </button>
         )}

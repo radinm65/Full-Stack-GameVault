@@ -1,28 +1,48 @@
+/* A track with a knob under the active icon. --size is the width and height of the knob and of each icon button. */
 .theme-toggle {
+    --size: 38px;
+    --gap: 5px;
+
+    position: relative;
     flex-shrink: 0;
     display: flex;
-    gap: 8px;
-    padding: 8px;
-    border-radius: 30px;
+    gap: var(--gap);
+    padding: var(--gap);
+    border-radius: 26px;
     background-color: #151b2c;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+}
+
+.theme-toggle-knob {
+    position: absolute;
+    top: var(--gap);
+    left: var(--gap);
+    width: var(--size);
+    height: var(--size);
+    border-radius: 50%;
+    background: linear-gradient(145deg, #4a5878, #2e384f);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.18);
+    transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.theme-toggle--light .theme-toggle-knob {
+    transform: translateX(calc(var(--size) + var(--gap)));
 }
 
 .theme-toggle-button {
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 48px;
-    height: 48px;
+    width: var(--size);
+    height: var(--size);
+    padding: 0;
     border: none;
     border-radius: 50%;
     background: transparent;
     color: var(--color-accent);
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.25s ease;
-}
-
-.theme-toggle-button:hover {
-    transform: scale(1.08);
+    cursor: inherit;
 }
 
 .theme-toggle-button:focus-visible {
@@ -30,18 +50,9 @@
     outline-offset: 2px;
 }
 
-.theme-toggle-button--active {
-    background-color: #354159;
-}
-
 @media (max-width: 768px) {
     .theme-toggle {
-        gap: 4px;
-        padding: 6px;
-    }
-
-    .theme-toggle-button {
-        width: 42px;
-        height: 42px;
+        --size: 34px;
+        --gap: 4px;
     }
 }

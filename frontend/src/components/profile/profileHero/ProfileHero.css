@@ -47,6 +47,15 @@
     background-color: color-mix(in srgb, var(--color-accent) 14%, var(--color-bg));
 }
 
+.profile-avatar-image {
+    display: block;
+    width: 88px;
+    height: 88px;
+    border: 2px solid var(--color-accent);
+    border-radius: 50%;
+    object-fit: cover;
+}
+
 .profile-name {
     grid-area: name;
     align-self: end;
@@ -127,6 +136,11 @@
     .profile-avatar .community-avatar {
         width: 84px !important;
         height: 84px !important;
+    }
+
+    .profile-avatar-image {
+        width: 84px;
+        height: 84px;
     }
 
     .profile-name {

@@ -7,6 +7,8 @@ interface IProfile {
   // Already formatted for the page, e.g. "March 2026"
   joinedAt: string;
   bio: string;
+  // The photo of the player. Without one the avatar shows the first letter of the name.
+  avatar?: string;
   banner: string;
   friends: number;
   following: number;
@@ -16,6 +18,14 @@ interface IProfile {
 }
 
 type ProfileAchievementIcon = "trophy" | "sparkle" | "swords";
+
+// What the Edit Profile form changes: display name, bio, avatar and cover (the username stays the same)
+interface IProfileEdits {
+  name: string;
+  bio: string;
+  avatar?: string;
+  banner: string;
+}
 
 // One of the achievements the player picked to show on the profile
 interface IProfileAchievement {
@@ -40,5 +50,5 @@ interface IProfileData {
   activities: IProfileActivity[];
 }
 
-export type { IProfile, IProfileAchievement, IProfileActivity, ProfileAchievementIcon };
+export type { IProfile, IProfileEdits, IProfileAchievement, IProfileActivity, ProfileAchievementIcon };
 export default IProfileData;

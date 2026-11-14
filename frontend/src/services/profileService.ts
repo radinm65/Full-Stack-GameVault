@@ -1,4 +1,5 @@
 import type IProfileData from "../core/interfaces/models/profile/IProfile";
+import type { IProfileEdits } from "../core/interfaces/models/profile/IProfile";
 import { dummyLibrary } from "./libraryService";
 
 // ! DUMMY DATA: replace with GET /api/profiles/:handle (the signed-in user's own profile when no handle
@@ -9,6 +10,13 @@ const OWN_HANDLE = "novastrider";
 
 function capitalize(text: string): string {
   return text.charAt(0).toUpperCase() + text.slice(1);
+}
+
+// ! Replace with PATCH /api/users/me { displayName, bio, avatar, cover }. The images are uploaded first (the
+// ! request sends their URLs) and the server validates the same rules as the form, a rejected value comes
+// ! back as a field error to show under that field.
+export async function updateProfile(edits: IProfileEdits): Promise<void> {
+  void edits;
 }
 
 // `handle` is empty for the signed-in user's own profile (/profile) and holds the player's handle

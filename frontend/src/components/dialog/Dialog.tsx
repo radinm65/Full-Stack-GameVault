@@ -12,7 +12,7 @@ const CLOSE_DURATION = 250;
 // A small box over the page, for short forms and lists. A native <dialog> gives the focus trap,
 // Escape and the backdrop. It opens and closes with an animation, so closing waits for it before
 // telling the page (onClose). The page shows it by rendering it and hides it when onClose is called.
-export default function Dialog({ title, onClose, children }: IDialog) {
+export default function Dialog({ title, size = "default", onClose, children }: IDialog) {
   const dialogRef = useRef<HTMLDialogElement>(null);
   const [isClosing, setIsClosing] = useState(false);
 
@@ -40,7 +40,7 @@ export default function Dialog({ title, onClose, children }: IDialog) {
   return (
     <dialog
       ref={dialogRef}
-      className={`dialog ${isClosing ? "dialog--closing" : ""}`}
+      className={`dialog ${size === "wide" ? "dialog--wide" : ""} ${isClosing ? "dialog--closing" : ""}`}
       aria-labelledby="dialog-title"
       tabIndex={-1}
       // Escape: stop the browser from closing the dialog at once, close with the animation instead
